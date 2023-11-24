@@ -75,7 +75,7 @@ dtoverlay=seeed-voicecard
 ```
 Edit cmdline.txt, remove ttyAMA0 related 
 ```
-#--- cmdline.txt
+#--- cmdline.txt and nobtcmd.txt
 dwc_otg.lpm_enable=0 console=tty1 root=/dev/mmcblk0p2 rootfstype=ext4 elevator=deadline rootwait
 
 # not like this:
