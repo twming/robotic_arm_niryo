@@ -1,0 +1,19 @@
+# Place "config.txt" changes (dtparam, dtoverlay, disable_overscan, etc.) in
+# this file. Please refer to the README file for a description of the various
+# configuration files on the boot partition.
+enable_uart=1
+init_uart_clock=16000000
+dtoverlay=pi3-disable-bt
+dtoverlay=uart0
+dtparam=spi=on
+dtparam=i2c1=on
+dtparam=i2c0=on
+dtparam=i2c_arm=on
+dtparam=uart0=on
+dtoverlay=mcp2515-can0-overlay,oscillator=16000000,interrupt=25
+
+[pi4]
+arm_64bit=1
+dtoverlay=i2s-mmap
+dtparam=i2s=on
+dtoverlay=seeed-voicecard
