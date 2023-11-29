@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.0.2)
 project(ttl_driver)
 message( STATUS "\n## Reading ${PROJECT_NAME}/CMakeLists.txt...")
 
-set(HARDWARE_VERSION "ned2" CACHE STRING "Robot model target")
+set(HARDWARE_VERSION "one" CACHE STRING "Robot model target")
 # for preprocessor directives
 if ("${HARDWARE_VERSION}" STREQUAL "one")
     add_definitions(-DNIRYO_ONE)

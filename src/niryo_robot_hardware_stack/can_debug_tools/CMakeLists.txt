@@ -18,7 +18,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 ## enforcing cleaner code.
 add_definitions(-Wall  -Werror)
 
-set(HARDWARE_VERSION "ned2" CACHE STRING "Robot model target")
+set(HARDWARE_VERSION "one" CACHE STRING "Robot model target")
 # for preprocessor directives
 if ("${HARDWARE_VERSION}" STREQUAL "one")
     add_definitions(-DNIRYO_ONE)
