@@ -1,0 +1,2 @@
+ip_address: "192.168.0.72"
+tcp_port: 40001  # Port used for TCP communication
