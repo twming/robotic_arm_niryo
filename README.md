@@ -85,4 +85,15 @@ dwc_otg.lpm_enable=0 console=tty1 root=/dev/mmcblk0p2 rootfstype=ext4 elevator=d
 # not like this:
 dwc_otg.lpm_enable=0 console=ttyAMA0,115200 kgdboc=ttyAMA0,115200 console=tty1 root=/dev/mmcblk0p2 rootfstype=ext4 elevator=deadline rootwait
 ```
- 
+add to .bashrc
+```
+export ROOT_PATH=/home/niryo/catkin_ws
+export LD_LIBRARY_PATH=$ROOT_PATH/devel/lib:/opt/ros/melodic/lib:$LD_LIBRARY_PATH
+export ROS_ETC_DIR=/opt/ros/melodic/etc/ros
+export CMAKE_PREFIX_PATH=$ROOT_PATH/devel:/opt/ros/melodic
+export ROS_ROOT=/opt/ros/melodic/share/ros
+export PYTHONPATH=$ROOT_PATH/devel/lib/python2.7/dist-packages:/opt/ros/melodic/lib/python2.7/dist-packages:/usr/lib/python2.7/dist-packages:$PYTHONPATH
+export ROS_PACKAGE_PATH=$ROOT_PATH/devel/share:/opt/ros/melodic/share
+export PATH=/opt/ros/melodic/bin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+export PKG_CONFIG_PATH=$ROOT_PATH/devel/lib/pkgconfig:/opt/ros/melodic/lib/pkgconfig
+```
