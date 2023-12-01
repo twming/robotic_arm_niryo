@@ -20,15 +20,15 @@ sudo apt install -y build-essential sqlite3 ffmpeg python-pip
 Install Raspberry PI dependencies
 ```
 cd ~
-mkdir -p catkin_ws/src
+git clone https://github.com/twming/robotic_arm_niryo
+mv robotic_arm_niryo/catkin_ws .
 cd catkin_ws
-git clone https://github.com/NiryoRobotics/ned_ros src
 pip2 install -r src/requirements.txt
 ```
 Install WiringPi and GPIO
 ```
-cd ~/dependencies/wiringPi
-chmod 777 build
+cd ~/robotic_arm_niryo/dependencies/wiring_pi
+chmod 777 build update
 ./build
 ```
 Install ROS and dependencies
@@ -43,7 +43,7 @@ set(HARDWARE_VERSION "one" CACHE STRING "Robot model target")
 Compile the package
 ```
 cd ~/catkin_ws
-catkin_make
+catkin_make -j1 -l1
 echo "source ~/catkin_ws/devel/setup.bash" >> ~/.bashrc
 ```
 Other hardware setup
@@ -97,3 +97,8 @@ export ROS_PACKAGE_PATH=$ROOT_PATH/devel/share:/opt/ros/melodic/share
 export PATH=/opt/ros/melodic/bin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
 export PKG_CONFIG_PATH=$ROOT_PATH/devel/lib/pkgconfig:/opt/ros/melodic/lib/pkgconfig
 ```
+add TCP server ip address to your local ip address,e.g. 192.168.0.122
+```
+sudo ~/catkin_ws/src/niryo_robot_user_interface/config/default.yaml
+```
+
