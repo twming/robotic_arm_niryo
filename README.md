@@ -34,7 +34,7 @@ chmod 777 build
 Install ROS and dependencies
 ```
 sudo apt install -y python-catkin-pkg python-pymodbus python-rosdistro python-rospkg python-rosdep-modules python-rosinstall python-rosinstall-generator python-wstool
-sudo apt install -y ros-melodic-moveit ros-melodic-controller-manager ros-melodic-tf2-web-republisher ros-melodic-rosbridge-server ros-melodic-joint-state-publisher-gui ros-melodic-rosdoc-lite ros-melodic-roslint ros-melodic-joint-state-controller ros-melodic-joint-trajectory-controller
+sudo apt install -y ros-melodic-moveit ros-melodic-controller-manager ros-melodic-tf2-web-republisher ros-melodic-rosbridge-server ros-melodic-joint-state-publisher-gui ros-melodic-rosdoc-lite ros-melodic-roslint ros-melodic-joint-state-controller ros-melodic-joint-trajectory-controller ros-melodic-robot-state-publisher
 ```
 Make change on HARDWARE_VERSION to one/ned/ned2 in CMakeLists.txt files on packages can_debug_tool,can_driver,common,conveyor_interface,dynamixel_sdk,end_effector_interface,joint_interface,niryo_robot_hardware_interface,tools_interface,ttl_driver
 ```
@@ -85,4 +85,15 @@ dwc_otg.lpm_enable=0 console=tty1 root=/dev/mmcblk0p2 rootfstype=ext4 elevator=d
 # not like this:
 dwc_otg.lpm_enable=0 console=ttyAMA0,115200 kgdboc=ttyAMA0,115200 console=tty1 root=/dev/mmcblk0p2 rootfstype=ext4 elevator=deadline rootwait
 ```
- 
+add to .bashrc
+```
+export ROOT_PATH=/home/niryo/catkin_ws
+export LD_LIBRARY_PATH=$ROOT_PATH/devel/lib:/opt/ros/melodic/lib:$LD_LIBRARY_PATH
+export ROS_ETC_DIR=/opt/ros/melodic/etc/ros
+export CMAKE_PREFIX_PATH=$ROOT_PATH/devel:/opt/ros/melodic
+export ROS_ROOT=/opt/ros/melodic/share/ros
+export PYTHONPATH=$ROOT_PATH/devel/lib/python2.7/dist-packages:/opt/ros/melodic/lib/python2.7/dist-packages:/usr/lib/python2.7/dist-packages:$PYTHONPATH
+export ROS_PACKAGE_PATH=$ROOT_PATH/devel/share:/opt/ros/melodic/share
+export PATH=/opt/ros/melodic/bin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+export PKG_CONFIG_PATH=$ROOT_PATH/devel/lib/pkgconfig:/opt/ros/melodic/lib/pkgconfig
+```
