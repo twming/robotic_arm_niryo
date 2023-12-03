@@ -135,7 +135,7 @@ def raw_data_to_number(val):
         val = - (val & 0x7FFF)
     return val
     
-client = ModbusTcpClient('localhost', port=5020)
+client = ModbusTcpClient('192.168.0.XXX', port=5020)
 
 client.connect()
 print("Connected to modbus server")
