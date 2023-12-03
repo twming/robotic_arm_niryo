@@ -97,8 +97,51 @@ export ROS_PACKAGE_PATH=$ROOT_PATH/devel/share:/opt/ros/melodic/share
 export PATH=/opt/ros/melodic/bin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
 export PKG_CONFIG_PATH=$ROOT_PATH/devel/lib/pkgconfig:/opt/ros/melodic/lib/pkgconfig
 ```
-add TCP server ip address to your local ip address,e.g. 192.168.0.122
+edit ROS Master,rosbridge,TCP server and Modbus server ip address to your local ip address,e.g. 192.168.0.XXX
 ```
-sudo ~/catkin_ws/src/niryo_robot_user_interface/config/default.yaml
+sudo vi ~/catkin_ws/src/niryo_robot_user_interface/config/default.yaml
+sudo vi /opt/ros/melodic/share/rosbridge_server/launch/rosbridge_websocket.launch
+sudo vi ~/catkin_ws/src/niryo_robot_modbus/launch/modbus_server.launch
+```
+To bringup the arm
+```
+roslaunch niryo_robot_bringup my_robot.launch
+```
+To control the arm using Python (local)
+```
+from niryo_robot_python_ros_wrapper import *
+import rospy
+
+rospy.init_node('arm_move_node')
+niryo_robot=NiryoRosWrapper()
+niryo_robot.calibrate_auto()
+
+niryo_robot.move_joints(-1.5, -0.2, 0.6, 1.3, 0.5, 0.3)
+```
+
+To control the arm using ModbusTcp (remote)
+```
+from pymodbus.client.sync import ModbusTcpClient
+import time
+
+def number_to_raw_data(val):
+    if val < 0:
+        val = (1 << 15) - val
+    return val
+
+
+def raw_data_to_number(val):
+    if (val >> 15) == 1:
+        val = - (val & 0x7FFF)
+    return val
+    
+client = ModbusTcpClient('localhost', port=5020)
+
+client.connect()
+print("Connected to modbus server")
+
+print("Calibrate Robot if needed")
+client.write_register(311, 1)
+time.sleep(1)
 ```
 
