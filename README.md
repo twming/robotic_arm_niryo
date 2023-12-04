@@ -35,6 +35,7 @@ Install ROS and dependencies
 ```
 sudo apt install -y python-catkin-pkg python-pymodbus python-rosdistro python-rospkg python-rosdep-modules python-rosinstall python-rosinstall-generator python-wstool
 sudo apt install -y ros-melodic-moveit ros-melodic-controller-manager ros-melodic-tf2-web-republisher ros-melodic-rosbridge-server ros-melodic-joint-state-publisher-gui ros-melodic-rosdoc-lite ros-melodic-roslint ros-melodic-joint-state-controller ros-melodic-joint-trajectory-controller ros-melodic-robot-state-publisher
+pip2 install aenum pathlib2
 ```
 Make change on HARDWARE_VERSION to one/ned/ned2 in CMakeLists.txt files on packages can_debug_tool,can_driver,common,conveyor_interface,dynamixel_sdk,end_effector_interface,joint_interface,niryo_robot_hardware_interface,tools_interface,ttl_driver
 ```
